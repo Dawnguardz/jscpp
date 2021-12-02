@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>
+        按照从小到大排序，思路：
+    </h4>
+    <p>
+        1.先取出一个值
+    </p>
+    <p>
+        2.再取出一个值，对比大小后放置
+    </p>
+    <p> 
+        3.依次取出单个值，对比大小后放置
+    </p>
+    <script>
+        // O(n2)
+        function insetSort(arr){
+            let copyArr = arr.slice();
+            let sortArr = [];
+            // 先取出一个值
+            sortArr.push(copyArr[0]);
+            copyArr.shift();
+            for ( let i=0; i<copyArr.length; i++){
+                let item = copyArr[i];
+                if ( item>sortArr[sortArr.length-1] ){
+                    // 取出的值比排序后的最后一位还大，就直接放到最后
+                    sortArr.push(item)
+                }else{
+                    for(let j=0; j<sortArr.length; j++){
+                        if ( item<sortArr[j] ){
+                            sortArr.splice(j,0,item);
+                            break;
+                        }
+                    }
+                }
+                
+            }
+            return sortArr
+        }
+        console.log(insetSort([7,6,5,4]))
+    </script>
+</body>
+</html>

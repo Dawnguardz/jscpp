@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <h4>
+        按照从小到大排序，思路：
+    </h4>
+    <p>
+        1.建立指针，指向从0号位开始向后依次移动到末尾前一位，每次移动前比较指针当前位置和下一个位置的数据大小，大的换到小的后面。
+    </p>
+    <p>
+        2.指针第一轮移动，会将数据的最大值移到队尾。
+    </p>
+    <P>
+        3.一轮完成后，指针从0号位开始向后依次移动到末尾前两位。会将本轮最大值移动到倒数第二位。
+    </P>
+    <script>
+        // O(n2)
+        function bubbleSort(arr){
+            let sortArr = arr.slice();
+            // 指针需要移动的轮数
+            let num = sortArr.length-1;
+            while ( num>0 ){
+                for ( let i=0; i<num; i++ ){
+                    if ( sortArr[i]>sortArr[i+1] ){
+                        [sortArr[i],sortArr[i+1]] = [sortArr[i+1],sortArr[i]]
+                    }
+                }
+                num--
+            }
+            return sortArr
+        }
+
+        console.log(bubbleSort([7,6,5,4]))
+    </script>
+</body>
+</html>

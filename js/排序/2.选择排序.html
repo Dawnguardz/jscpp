@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>
+        按照从小到大排序，思路：
+    </h4>
+    <p>
+        1.遍历数据，找出最小值，取出这个值
+    </p>
+    <p>
+        2.再次遍历剩余的数据，找出最小值，取出这个值
+    </p>
+    <script>
+        // O(n2)
+        function selectSort(arr){
+            let copyArr = arr.slice();
+            let sortArr = [];
+            let length = copyArr.length;
+            while( length>0 ){
+                let min = copyArr[0];
+                let minIdx = 0;
+                //找出最小值和最小值的idx
+                for ( let i=1; i<length; i++ ){
+                    if ( min>copyArr[i] ){
+                        min = copyArr[i];
+                        minIdx = i
+                    }
+                }
+                sortArr.push(min);
+                copyArr.splice(minIdx,1);
+                length--;
+            }
+            return sortArr
+        }
+
+        console.log(selectSort([7,6,5,4]))
+    </script>
+</body>
+</html>

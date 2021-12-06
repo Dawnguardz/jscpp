@@ -1,8 +1,8 @@
 // 栈：数据一端进出，先进者后出
 export default class JsStack{
-    constructor(){
+    constructor(arr=[]){
         this.top = undefined;  //栈顶
-        this.comps = [];       //栈储存的元素
+        this.comps = arr;       //栈储存的元素
     }
 
     // 入栈
@@ -13,7 +13,8 @@ export default class JsStack{
 
     // 出栈
     pop(){
-        this.top = this.comps.shift()
+        this.comps.shift()
+        this.top = this.comps[0];
     }
 
     getLength(){

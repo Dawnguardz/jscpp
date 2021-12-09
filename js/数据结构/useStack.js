@@ -44,9 +44,10 @@ function isMatch(str){
     return true
 }
 // console.log(isMatch('[]{(])}'))
-     
+
 
 // 项目2：走迷宫，迷宫方阵内0为通道，1不通，起点(1,1)，终点(8,8)
+// 思路：可以走的节点位置入栈，走到无路可走就出栈回退，退到栈顶找其他路走
 let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], //x0
     [1, 0, 0, 1, 0, 0, 0, 1, 0, 1], //x1
@@ -60,7 +61,7 @@ let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]  //x9
 //   y0 y1 y2 y3 y4 y5 y6 y7 y8 y9   
 ]
-
+// 优先深度搜索
 function getPath(maze) {
     let mazeStack = new JsStack();
     let copyMaze = JSON.parse(JSON.stringify(maze));
